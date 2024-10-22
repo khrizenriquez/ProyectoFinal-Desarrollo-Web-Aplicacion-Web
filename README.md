@@ -1,6 +1,6 @@
 # Proyecto Final: .NET /Web Services/JAVA EE
 
-Aplicación de web: Aplicación desarrollada en ASP.NET (Arquitectura .NET) para el registro de las operaciones diarias del Seguro Médico (25 pts):
+Aplicación de web: Aplicación desarrollada en ASP.NET (Arquitectura .NET) para el registro de las operaciones diarias del Seguro Médico:
 1. Mantenimiento de Afiliados: opción del sistema para poder realizar altas, modificaciones y bajas a los
 afiliados al Seguro Médico.
 2. Mantenimiento de Proveedores: opción del sistema para poder realizar altas, modificaciones y bajas de
