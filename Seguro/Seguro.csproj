@@ -67,12 +67,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AfiliadoEdit.aspx" />
+    <Content Include="AfiliadoList.aspx" />
     <Content Include="Img\umg-logo.png" />
     <Content Include="Login.aspx" />
+    <Content Include="ProveedorEdit.aspx" />
+    <Content Include="ProveedorList.aspx" />
     <Content Include="Styles\login.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afiliado.cs" />
+    <Compile Include="AfiliadoEdit.aspx.cs">
+      <DependentUpon>AfiliadoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfiliadoEdit.aspx.designer.cs">
+      <DependentUpon>AfiliadoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AfiliadoList.aspx.cs">
+      <DependentUpon>AfiliadoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfiliadoList.aspx.designer.cs">
+      <DependentUpon>AfiliadoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseConnection.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -81,6 +101,21 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor.cs" />
+    <Compile Include="ProveedorEdit.aspx.cs">
+      <DependentUpon>ProveedorEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProveedorEdit.aspx.designer.cs">
+      <DependentUpon>ProveedorEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedorList.aspx.cs">
+      <DependentUpon>ProveedorList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProveedorList.aspx.designer.cs">
+      <DependentUpon>ProveedorList.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
