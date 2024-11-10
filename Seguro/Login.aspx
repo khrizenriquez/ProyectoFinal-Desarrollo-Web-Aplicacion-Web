@@ -15,24 +15,26 @@
                     <img class="logo" src="Img/umg-logo.png" alt="Logo UM">
                 </figure>
                 <h1 class="title is-4 is-centered-text">Inicia sesión</h1>
+
+                <asp:Label ID="lblMensaje" runat="server" CssClass="notification is-hidden"></asp:Label>
                 
                 <div class="field">
-                    <label class="label">Correo electrónico</label>
+                    <label class="label">Usuario</label>
                     <div class="control">
-                        <input class="input" type="email" placeholder="toor@miumg.edu.gt" required />
+                        <asp:TextBox ID="txtNombreUsuario" runat="server" CssClass="input" type="text" placeholder="toor" required />
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Contraseña</label>
                     <div class="control">
-                        <input class="input" type="password" placeholder="••••••••" required />
+                        <asp:TextBox ID="txtPassword" runat="server" CssClass="input" TextMode="Password" placeholder="••••" required />
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <button class="button is-link is-fullwidth">Iniciar sesión</button>
+                        <asp:Button ID="btnLogin" runat="server" CssClass="button is-link is-fullwidth" Text="Iniciar sesión" OnClick="btnLogin_Click" />
                     </div>
                 </div>
             </div>

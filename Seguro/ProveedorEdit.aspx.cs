@@ -8,6 +8,10 @@ namespace Seguro
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UsuarioAutenticado"] == null || !(bool)Session["UsuarioAutenticado"])
+            {
+                Response.Redirect("Login.aspx");
+            }
             if (!IsPostBack && Request.QueryString["NIT"] != null)
             {
                 var nit = Request.QueryString["NIT"];

@@ -42,13 +42,22 @@ namespace Seguro
         protected global::System.Web.UI.WebControls.TextBox txtCodigoPaciente;
 
         /// <summary>
-        /// txtMesCoberturaCancelado control.
+        /// ddlMesCobertura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMesCoberturaCancelado;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMesCobertura;
+
+        /// <summary>
+        /// ddlAnoCobertura control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAnoCobertura;
 
         /// <summary>
         /// txtMonto control.

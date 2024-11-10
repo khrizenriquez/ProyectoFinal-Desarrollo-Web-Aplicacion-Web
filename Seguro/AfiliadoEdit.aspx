@@ -19,7 +19,7 @@
                     Mantenimiento de Proveedores
                 </a>
 
-                <a class="navbar-item" href="PagoPrima.aspx">
+                <a class="navbar-item" href="PagoPrimaList.aspx">
                     Pago Prima
                 </a>
             </div>

@@ -19,7 +19,7 @@
                     Mantenimiento de Proveedores
                 </a>
 
-                <a class="navbar-item" href="PagoPrima.aspx">
+                <a class="navbar-item" href="PagoPrimaList.aspx">
                     Pago Prima
                 </a>
             </div>
@@ -57,7 +57,7 @@
                         <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha de Nacimiento" DataFormatString="{0:yyyy-MM-dd}" />
                         <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
                         <asp:BoundField DataField="FechaInicioCobertura" HeaderText="Fecha de Inicio de Cobertura" DataFormatString="{0:yyyy-MM-dd}" />
-                        <asp:BoundField DataField="MontoCobertura" HeaderText="Monto de Cobertura" DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="MontoCobertura" HeaderText="Monto de Cobertura" DataFormatString="Q{0:N2}" />
                         
                         <asp:TemplateField HeaderText="Estado">
                             <ItemTemplate>

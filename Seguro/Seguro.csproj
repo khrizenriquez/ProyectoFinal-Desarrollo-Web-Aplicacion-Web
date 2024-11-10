@@ -71,7 +71,9 @@
     <Content Include="AfiliadoList.aspx" />
     <Content Include="Img\umg-logo.png" />
     <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="PagoPrima.aspx" />
+    <Content Include="PagoPrimaList.aspx" />
     <Content Include="ProveedorEdit.aspx" />
     <Content Include="ProveedorList.aspx" />
     <Content Include="Styles\login.css" />
@@ -101,12 +103,26 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PagoPrima.aspx.cs">
       <DependentUpon>PagoPrima.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PagoPrima.aspx.designer.cs">
       <DependentUpon>PagoPrima.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagoPrimaList.aspx.cs">
+      <DependentUpon>PagoPrimaList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagoPrimaList.aspx.designer.cs">
+      <DependentUpon>PagoPrimaList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
