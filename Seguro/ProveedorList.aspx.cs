@@ -22,12 +22,10 @@ namespace Seguro
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        DatabaseConnection.OpenConnection();
-                    }
+                    string query = @"SELECT NIT, RazonSocial, Status, 
+                                     CASE WHEN Status = 1 THEN 'Activo' ELSE 'Inactivo' END AS Status 
+                                     FROM Proveedores";
 
-                    string query = "SELECT NIT, RazonSocial FROM Proveedores";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -48,58 +46,34 @@ namespace Seguro
                     lblMensaje.Text = $"Error al cargar proveedores: {ex.Message}";
                     lblMensaje.CssClass = "notification is-danger";
                 }
-                finally
-                {
-                    DatabaseConnection.CloseConnection();
-                }
             }
         }
 
-
-        protected void btnBuscar_Click(object sender, EventArgs e)
+        protected void gvProveedores_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            CargarProveedores();
+            var nit = gvProveedores.DataKeys[e.NewEditIndex].Value.ToString();
+            Response.Redirect($"~/ProveedorEdit.aspx?NIT={nit}");
         }
 
-        protected void gvProveedores_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvProveedores_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            if (e.CommandName == "Editar")
-            {
-                string nit = e.CommandArgument.ToString();
-                Response.Redirect("~/ProveedorEdit.aspx?NIT=" + nit);
-            }
-            else if (e.CommandName == "Eliminar")
-            {
-                string nit = e.CommandArgument.ToString();
-                EliminarProveedor(nit);
-                CargarProveedores();
-            }
-        }
-
-        private void EliminarProveedor(string nit)
-        {
+            var nit = gvProveedores.DataKeys[e.RowIndex].Value.ToString();
             using (SqlConnection connection = DatabaseConnection.GetConnection())
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        DatabaseConnection.OpenConnection();
-                    }
+                    string deactivateQuery = "UPDATE Proveedores SET Status = 0 WHERE NIT = @NIT";
+                    SqlCommand command = new SqlCommand(deactivateQuery, connection);
+                    command.Parameters.AddWithValue("@NIT", nit);
+                    DatabaseConnection.OpenConnection();
+                    command.ExecuteNonQuery();
 
-                    string query = "DELETE FROM Proveedores WHERE NIT = @NIT";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@NIT", nit);
-                        command.ExecuteNonQuery();
-                    }
-
-                    lblMensaje.Text = "Proveedor eliminado exitosamente.";
+                    lblMensaje.Text = "Proveedor desactivado exitosamente.";
                     lblMensaje.CssClass = "notification is-success";
                 }
                 catch (Exception ex)
                 {
-                    lblMensaje.Text = $"Error al eliminar proveedor: {ex.Message}";
+                    lblMensaje.Text = $"Error al desactivar proveedor: {ex.Message}";
                     lblMensaje.CssClass = "notification is-danger";
                 }
                 finally
@@ -107,7 +81,44 @@ namespace Seguro
                     DatabaseConnection.CloseConnection();
                 }
             }
+            CargarProveedores();
         }
 
+        protected void gvProveedores_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "ActivarDesactivar")
+            {
+                string nit = e.CommandArgument.ToString();
+                using (SqlConnection connection = DatabaseConnection.GetConnection())
+                {
+                    try
+                    {
+                        string toggleStatusQuery = "UPDATE Proveedores SET Status = CASE WHEN Status = 1 THEN 0 ELSE 1 END WHERE NIT = @NIT";
+                        SqlCommand command = new SqlCommand(toggleStatusQuery, connection);
+                        command.Parameters.AddWithValue("@NIT", nit);
+                        DatabaseConnection.OpenConnection();
+                        command.ExecuteNonQuery();
+
+                        lblMensaje.Text = "Estado del proveedor actualizado exitosamente.";
+                        lblMensaje.CssClass = "notification is-success";
+                    }
+                    catch (Exception ex)
+                    {
+                        lblMensaje.Text = $"Error al actualizar el estado del proveedor: {ex.Message}";
+                        lblMensaje.CssClass = "notification is-danger";
+                    }
+                    finally
+                    {
+                        DatabaseConnection.CloseConnection();
+                    }
+                }
+                CargarProveedores();
+            }
+        }
+
+        protected void btnCrearNuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProveedorEdit.aspx");
+        }
     }
 }

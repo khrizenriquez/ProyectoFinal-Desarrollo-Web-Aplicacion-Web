@@ -29,6 +29,7 @@ namespace Seguro
                 {
                     txtNIT.Text = nit;
                     txtRazonSocial.Text = reader["RazonSocial"].ToString();
+                    txtNIT.ReadOnly = true;
                 }
                 reader.Close();
                 DatabaseConnection.CloseConnection();
@@ -37,19 +38,71 @@ namespace Seguro
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            string nit = txtNIT.Text.Trim();
+            string razonSocial = txtRazonSocial.Text.Trim();
+
+            if (string.IsNullOrEmpty(nit) || string.IsNullOrEmpty(razonSocial))
+            {
+                lblMensaje.Text = "Todos los campos son obligatorios.";
+                lblMensaje.CssClass = "notification is-danger";
+                return;
+            }
+
             using (SqlConnection connection = DatabaseConnection.GetConnection())
             {
-                string query = "UPDATE Proveedores SET RazonSocial = @RazonSocial WHERE NIT = @NIT";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@NIT", txtNIT.Text);
-                cmd.Parameters.AddWithValue("@RazonSocial", txtRazonSocial.Text);
+                // Verificacion sobre si el NIT ya existe
+                string checkQuery = "SELECT COUNT(*) FROM Proveedores WHERE NIT = @NIT";
+                SqlCommand checkCmd = new SqlCommand(checkQuery, connection);
+                checkCmd.Parameters.AddWithValue("@NIT", nit);
 
                 DatabaseConnection.OpenConnection();
-                cmd.ExecuteNonQuery();
-                DatabaseConnection.CloseConnection();
+                int count = (int)checkCmd.ExecuteScalar();
 
-                lblMensaje.Text = "Proveedor actualizado exitosamente.";
-                lblMensaje.CssClass = "notification is-success";
+                // NIT no debería existir
+                if (Request.QueryString["NIT"] == null && count > 0)
+                {
+                    lblMensaje.Text = "El NIT ya existe. Por favor, use uno diferente.";
+                    lblMensaje.CssClass = "notification is-danger";
+                    DatabaseConnection.CloseConnection();
+                    return;
+                }
+                else if (Request.QueryString["NIT"] != null && Request.QueryString["NIT"] != nit && count > 0)
+                {
+                    lblMensaje.Text = "El NIT ya existe en otro proveedor.";
+                    lblMensaje.CssClass = "notification is-danger";
+                    DatabaseConnection.CloseConnection();
+                    return;
+                }
+
+                string query;
+                if (Request.QueryString["NIT"] != null)
+                {
+                    query = "UPDATE Proveedores SET RazonSocial = @RazonSocial WHERE NIT = @NIT";
+                }
+                else
+                {
+                    query = "INSERT INTO Proveedores (NIT, RazonSocial, Status) VALUES (@NIT, @RazonSocial, 1)";
+                }
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@NIT", nit);
+                cmd.Parameters.AddWithValue("@RazonSocial", razonSocial);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    lblMensaje.Text = "Proveedor guardado exitosamente.";
+                    lblMensaje.CssClass = "notification is-success";
+                }
+                catch (Exception ex)
+                {
+                    lblMensaje.Text = $"Error al guardar el proveedor: {ex.Message}";
+                    lblMensaje.CssClass = "notification is-danger";
+                }
+                finally
+                {
+                    DatabaseConnection.CloseConnection();
+                }
             }
         }
 

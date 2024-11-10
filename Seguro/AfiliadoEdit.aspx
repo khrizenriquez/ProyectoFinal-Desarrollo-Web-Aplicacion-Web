@@ -8,6 +8,31 @@
     <link href="Styles/estilos.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="AfiliadoList.aspx">
+                    Mantenimiento de Afiliados
+                </a>
+
+                <a class="navbar-item" href="ProveedorList.aspx">
+                    Mantenimiento de Proveedores
+                </a>
+
+                <a class="navbar-item" href="PagoPrima.aspx">
+                    Pago Prima
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a href="Logout.aspx" class="button is-danger">
+                        <strong>Cerrar Sesión</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <section class="section">
         <div class="container">
             <h2 class="title is-3">Editar Afiliado</h2>
@@ -79,7 +104,7 @@
 
                 <div class="buttons">
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="button is-primary" OnClick="btnGuardar_Click" />
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="button is-light" OnClick="btnCancelar_Click" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Regresar" CssClass="button is-light" OnClick="btnCancelar_Click" />
                 </div>
             </form>
         </div>

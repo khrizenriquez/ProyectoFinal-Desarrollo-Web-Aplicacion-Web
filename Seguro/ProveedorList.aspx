@@ -4,31 +4,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lista de Proveedores</title>
-    <link rel="stylesheet" href="~/Styles/bulma.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet" />
+    <link href="Styles/estilos.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container">
-            <h1 class="title">Lista de Proveedores</h1>
-
-            <asp:Label ID="lblMensaje" runat="server" CssClass="notification is-info"></asp:Label>
-            
-            <asp:TextBox ID="txtBuscar" runat="server" CssClass="input" placeholder="Buscar por NIT o razón social"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="button is-primary" OnClick="btnBuscar_Click" />
-            
-            <asp:GridView ID="gvProveedores" runat="server" AutoGenerateColumns="False" CssClass="table is-striped is-hoverable">
-                <Columns>
-                    <asp:BoundField DataField="NIT" HeaderText="NIT" />
-                    <asp:BoundField DataField="RazonSocial" HeaderText="Razón Social" />
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lnkEditar" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%# Eval("NIT") %>' CssClass="button is-link is-small" />
-                            <asp:LinkButton ID="lnkEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("NIT") %>' CssClass="button is-danger is-small" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="AfiliadoList.aspx">
+                    Mantenimiento de Afiliados
+                </a>
+                <a class="navbar-item" href="ProveedorList.aspx">
+                    Mantenimiento de Proveedores
+                </a>
+                <a class="navbar-item" href="PagoPrima.aspx">
+                    Pago Prima
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a href="Logout.aspx" class="button is-danger">
+                        <strong>Cerrar Sesión</strong>
+                    </a>
+                </div>
+            </div>
         </div>
-    </form>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-3">Lista de Proveedores</h2>
+
+            <form id="form1" runat="server">
+                
+                <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="notification is-hidden"></asp:Label>
+
+                <div class="mb-4">
+                    <asp:Button ID="btnCrearNuevo" runat="server" Text="Crear Nuevo Proveedor" CssClass="button is-primary mb-3" OnClick="btnCrearNuevo_Click" />
+                </div>
+
+                <asp:GridView ID="gvProveedores" runat="server" AutoGenerateColumns="False" CssClass="table is-striped is-fullwidth" DataKeyNames="NIT"
+                              OnRowEditing="gvProveedores_RowEditing" OnRowDeleting="gvProveedores_RowDeleting" OnRowCommand="gvProveedores_RowCommand">
+                    <Columns>
+                        <asp:BoundField DataField="NIT" HeaderText="Número de NIT" />
+                        <asp:BoundField DataField="RazonSocial" HeaderText="Razón Social" />
+                        
+                        <asp:TemplateField HeaderText="Estado">
+                            <ItemTemplate>
+                                <%# Convert.ToString(Eval("Status")) == "1" ? "Activo" : "Inactivo" %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:CommandField ShowEditButton="True" EditText="Editar" />
+
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnActivarDesactivar" runat="server" Text='<%# int.TryParse(Eval("Status").ToString(), out int status) && status == 1 ? "Desactivar" : "Activar" %>' 
+                                            CommandName="ActivarDesactivar" CommandArgument='<%# Eval("NIT") %>' CssClass="button is-small is-info" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </form>
+        </div>
+    </section>
 </body>
 </html>
