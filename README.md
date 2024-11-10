@@ -23,3 +23,12 @@ registrar por cada pago son:
 - Numero de NIT
 - Nombre o razón social
 
+
+### Imágenes de ejemplo
+![image](https://github.com/user-attachments/assets/739ee659-41e2-450a-989b-385b71ec1680)
+
+![image](https://github.com/user-attachments/assets/e21ec9eb-b589-4b29-9482-445dedad878a)
+
+![image](https://github.com/user-attachments/assets/f03e73c4-1b30-4ebf-b69b-aa6a936add6f)
+
+![image](https://github.com/user-attachments/assets/81e77dbb-cbc1-4e24-940c-cc44503c3f4e)
