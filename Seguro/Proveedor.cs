@@ -8,7 +8,7 @@ namespace Seguro.Models
         public string Nit { get; set; }
         public string RazonSocial { get; set; }
 
-        public void InsertarProveedor()
+        /*public void InsertarProveedor()
         {
             DatabaseConnection.OpenConnection();
             using (SqlCommand cmd = new SqlCommand("INSERT INTO Proveedores (Nit, RazonSocial) VALUES (@Nit, " +
@@ -19,7 +19,7 @@ namespace Seguro.Models
                 cmd.ExecuteNonQuery();
             }
             DatabaseConnection.CloseConnection();
-        }
+        }*/
 
     }
 }
