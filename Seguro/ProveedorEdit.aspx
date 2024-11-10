@@ -3,21 +3,25 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Registro de Proveedor</title>
-    <link rel="stylesheet" href="/Styles/login.css" />
+    <title>Editar Proveedor</title>
+    <link href="Styles/estilos.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server" class="form-style-9">
-        <h2>Registro de Proveedor</h2>
-
-        <asp:Label ID="lblNIT" runat="server" Text="Número de NIT" AssociatedControlID="txtNIT"></asp:Label>
-        <asp:TextBox ID="txtNIT" runat="server" CssClass="field-style field-full" Enabled="false"></asp:TextBox>
-
-        <asp:Label ID="lblRazonSocial" runat="server" Text="Razón Social"></asp:Label>
-        <asp:TextBox ID="txtRazonSocial" runat="server" CssClass="field-style field-full" Placeholder="Nombre o Razón Social"></asp:TextBox>
-
-        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
-        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" PostBackUrl="~/ProveedorList.aspx" />
+        <h2>Editar Proveedor</h2>
+        <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="notification"></asp:Label>
+        
+        <div>
+            <label>NIT:</label>
+            <asp:TextBox ID="txtNIT" runat="server" CssClass="input is-info" ReadOnly="true"></asp:TextBox>
+        </div>
+        <div>
+            <label>Razón Social:</label>
+            <asp:TextBox ID="txtRazonSocial" runat="server" CssClass="input is-info"></asp:TextBox>
+        </div>
+        
+        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="button is-primary" OnClick="btnGuardar_Click" />
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="button is-light" OnClick="btnCancelar_Click" />
     </form>
 </body>
 </html>

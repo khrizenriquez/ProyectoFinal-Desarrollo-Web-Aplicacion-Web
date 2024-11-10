@@ -4,24 +4,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lista de Proveedores</title>
-    <link rel="stylesheet" href="/Styles/login.css" />
+    <link rel="stylesheet" href="~/Styles/bulma.min.css" />
 </head>
 <body>
-    <form id="form1" runat="server" class="form-style-9">
-        <h2>Gestión de Proveedores</h2>
+    <form id="form1" runat="server">
+        <div class="container">
+            <h1 class="title">Lista de Proveedores</h1>
 
-        <asp:TextBox ID="txtBuscar" runat="server" Width="400px" placeholder="Buscar por NIT o Razón Social..."></asp:TextBox>
-        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
-
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="NIT" OnRowEditing="GridView1_RowEditing" OnRowDeleting="GridView1_RowDeleting">
-            <Columns>
-                <asp:BoundField DataField="NIT" HeaderText="NIT" />
-                <asp:BoundField DataField="RazonSocial" HeaderText="Razón Social" />
-                <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
-            </Columns>
-        </asp:GridView>
-
-        <asp:Button ID="btnNuevoProveedor" runat="server" Text="Nuevo Proveedor" PostBackUrl="~/ProveedorEdit.aspx" OnClick="btnNuevoProveedor_Click" />
+            <asp:Label ID="lblMensaje" runat="server" CssClass="notification is-info"></asp:Label>
+            
+            <asp:TextBox ID="txtBuscar" runat="server" CssClass="input" placeholder="Buscar por NIT o razón social"></asp:TextBox>
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="button is-primary" OnClick="btnBuscar_Click" />
+            
+            <asp:GridView ID="gvProveedores" runat="server" AutoGenerateColumns="False" CssClass="table is-striped is-hoverable">
+                <Columns>
+                    <asp:BoundField DataField="NIT" HeaderText="NIT" />
+                    <asp:BoundField DataField="RazonSocial" HeaderText="Razón Social" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lnkEditar" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%# Eval("NIT") %>' CssClass="button is-link is-small" />
+                            <asp:LinkButton ID="lnkEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("NIT") %>' CssClass="button is-danger is-small" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
     </form>
 </body>
 </html>

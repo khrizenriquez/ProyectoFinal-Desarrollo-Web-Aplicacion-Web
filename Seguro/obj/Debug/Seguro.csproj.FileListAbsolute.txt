@@ -1,3 +1,4 @@
+C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\Seguro.dll.config
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\Seguro.dll
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\Seguro.pdb
@@ -14,7 +15,6 @@ C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desa
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.Managed.Core.targets
 C:\Users\khrizenriquez\Documents\ProyectoFinal-Desarrollo-Web\ProyectoFinal-Desarrollo-Web-Aplicacion-Web\Seguro\bin\roslyn\Microsoft.VisualBasic.Core.targets

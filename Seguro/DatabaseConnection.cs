@@ -10,7 +10,7 @@ namespace Seguro
 
         public static SqlConnection GetConnection()
         {
-            if (_connection == null)
+            if (_connection == null || string.IsNullOrEmpty(_connection.ConnectionString))
             {
                 _connection = new SqlConnection("Server=192.168.1.52,1433;Database=SeguroMedicoDesarrolloWeb;User Id=desarrolloweb;Password=DesarolloWeb2024;Encrypt=True;TrustServerCertificate=True;");
             }
@@ -19,7 +19,7 @@ namespace Seguro
 
         public static void OpenConnection()
         {
-            if (_connection == null)
+            if (_connection == null || string.IsNullOrEmpty(_connection.ConnectionString))
             {
                 _connection = GetConnection();
             }
